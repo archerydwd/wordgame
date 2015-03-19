@@ -111,4 +111,63 @@ cd wordgame/
 mv wordgameapp.py __init__.py
 ```
 
+=
+###Configure and Enable a New Virtual Host
+
+**Create and edit the config file for the site**
+
+```
+sudo touch etc/apache2/sites-available/wordgame.conf
+sudo vim etc/apache2/sites-available/wordgame.conf
+```
+
+Insert the following:
+
+```
+<VirtualHost *:80>
+        ServerName 127.0.0.1:80
+        WSGIScriptAlias / /var/www/wordgame/wordgame.wsgi
+        <Directory /var/www/wordgame/wordgame/>
+                Order allow,deny
+                Allow from all
+        </Directory>
+        Alias /static /var/www/wordgame/wordgame/static
+        <Directory /var/www/wordgame/wordgame/static/>
+                Order allow,deny
+                Allow from all
+        </Directory>
+        ErrorLog ${APACHE_LOG_DIR}/error.log
+        LogLevel warn
+        CustomLog ${APACHE_LOG_DIR}/access.log combined
+</VirtualHost>
+```
+
+**Disable other virtual hosts**
+
+If you are unsure what other virtual hosts are running, you can issue the following command:
+
+```
+sudo ls etc/apache2/sites-enabled/
+```
+
+The above will produce a list of all running hosts, use the names in the below command one after another.
+
+```
+sudo a2dissite 000-default.conf
+```
+
+**Enable the virtual host for wordgame**
+
+```
+sudo a2ensite wordgame.conf
+```
+
+**Reload Apache server**
+
+```
+sudo etc/init.d/apache2 reload
+```
+
+
+
 
