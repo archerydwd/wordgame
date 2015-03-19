@@ -1,0 +1,15 @@
+<html>
+	<head>
+		<title>{{ the_title }}</title>
+		<link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
+	</head>
+	<body>
+		<center>
+			<h1>{{ the_title }}</h1>
+		</center>
+		{% block the_body %}
+		{% endblock %}
+		<br>
+		<center><p>Darren Daly, C00114398.</p></center>
+	</body>
+</html>

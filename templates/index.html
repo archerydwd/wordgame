@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block the_body %}
+<center>
+	<br><font size=6>{{ base_word }}</font>
+	<p>
+		<h2>Rules:</h2>
+		Enter 7 valid words<br>
+		Words must be 3 letters or more long<br>
+		Cannot enter {{base_word}}<br>
+		No duplicate words
+	</p>
+	<form action="{{ the_save_url }}" method="POST">
+		{% with messages = get_flashed_messages() %}
+			{% if messages %}
+				{% for message in messages %}
+					<div class=flash>{{ message }}</div>
+				{% endfor %}
+			{% endif %}
+		{% endwith %}
+
+		<p><h2>Inspire us with your words:</h2><br>
+			<input type=="TEXT" name="user_guess_1" class="textbox" autofocus><br>
+			<input type=="TEXT" name="user_guess_2" class="textbox"><br>
+			<input type=="TEXT" name="user_guess_3" class="textbox"><br>
+			<input type=="TEXT" name="user_guess_4" class="textbox"><br>
+			<input type=="TEXT" name="user_guess_5" class="textbox"><br>
+			<input type=="TEXT" name="user_guess_6" class="textbox"><br>
+			<input type=="TEXT" name="user_guess_7" class="textbox"><br>
+		</p>
+		<p>
+			<input class="css_button" type="SUBMIT" value="Submit Words">
+		</p>
+	</form>
+	<a href={{ ranked_url }}>
+		<button class="css_button">Ranked List</button>
+	</a>
+</center>
+{% endblock %}
+

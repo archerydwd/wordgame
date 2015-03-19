@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+	{% block the_body %}
+		<center>
+			<p>Time you took was: {{ time_took }}</p>
+			{% if rank == 1 %}
+				<p><h2>EPIC!</h2> you ranked first place</p>
+			{% endif %}
+			{% if rank > 10 %}
+				<p>Too bad, you ranked: {{ rank }}</p>
+			{% else %}
+				<p>Well done, your in the top 10, You ranked: {{ rank }}.</p>
+			{% endif %}
+			<a href={{ home_link }}><button class="css_button">Go again</button></a><br><br>
+			{% if rank > 1 %}
+				<a href={{ ranked_url }}><button class="css_button">See who bet you</button></a>
+			{% else %}
+				<a href={{ ranked_url }}><button class="css_button">See who you bet</button></a>
+			{% endif %}
+		</center>
+	{% endblock %}

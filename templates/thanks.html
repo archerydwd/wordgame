@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+	{% block the_body %}
+		<center>
+			<p>
+				{{ msg }}
+			</p>
+			{% if incorrect_words %}
+				{% for word in incorrect_words %}
+					<p>
+						{{ word }}
+					</p>
+				{% endfor %}
+				<a href={{ home_link }}>Try again</a>
+			{% else %}
+				<p>Time you took was: {{ time_took }}</p>
+				<form action="{{ user_name_url }}" method="POST">
+					<p>What is your name mighty player?<br><br>
+						<input type="TEXT" class="textbox" name="player_name" required><br>
+						<input class="css_button" type="SUBMIT" value="Submit Name">
+					</p>
+				</form>
+			{% endif %}
+		</center>
+	{% endblock %}
+

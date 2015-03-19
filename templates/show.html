@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+	{% block the_body %}
+		<br>
+		<div style="width: 300px; margin-left: auto; margin-right: auto;">
+			{% set count = 1 %}
+			<table>
+				{% for line in the_ranked %}
+					<tr>
+						<td>{{ count }}</td>
+						<td>{{ line }}</td>
+						{% set count = count + 1 %}
+					</tr>
+				{% endfor %}
+			</table>
+		</div>
+		<center>
+			<br><a href={{ home_link }}><button class="css_button">Go again</button></a>
+		</center>
+	{% endblock %}
+
+
