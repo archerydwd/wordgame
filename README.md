@@ -97,6 +97,36 @@ sudo a2enmod wsgi
 ```
 
 =
+###Edit the wsgi file
+
+Change directory to var/www/wordgame/ and do the following:
+
+```
+vim wordgame.wsgi
+```
+
+And insert the following:
+
+```
+#!/usr/bin/python
+import sys
+import logging
+logging.basicConfig(stream=sys.stderr)
+sys.path.insert(0,"/var/www/wordgame/")
+
+from wordgame import app as application
+application.secret_key = 'ThisIsMyVerySecretKey'
+```
+
+**Reload Apache**
+
+To make our changes take effect.
+
+```
+sudo etc/init.d/apache2 reload
+```
+
+=
 ###Changes to the app structure
 
 We are going to make a few changes to this application:
@@ -163,36 +193,6 @@ sudo a2ensite wordgame.conf
 ```
 
 **Reload Apache server**
-
-```
-sudo etc/init.d/apache2 reload
-```
-
-=
-###Edit the wsgi file
-
-Change directory to var/www/wordgame/ and do the following:
-
-```
-vim wordgame.wsgi
-```
-
-And insert the following:
-
-```
-#!/usr/bin/python
-import sys
-import logging
-logging.basicConfig(stream=sys.stderr)
-sys.path.insert(0,"/var/www/wordgame/")
-
-from wordgame import app as application
-application.secret_key = 'ThisIsMyVerySecretKey'
-```
-
-**Restart Apache**
-
-To make our changes take effect.
 
 ```
 sudo etc/init.d/apache2 reload
