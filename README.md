@@ -80,6 +80,21 @@ sudo apt-get install vim        //or your favourite text editor
 ```
 
 =
+###Changes to the app structure
+
+We are going to make a few changes to this application:
+
+Inside the /var/www/wordgame/ directory, do:
+
+```
+mkdir wordgame
+mv * wordgame/
+touch wordgame.wsgi
+cd wordgame/
+mv wordgameapp.py __init__.py
+```
+
+=
 ###Install and Enable Mod_wsgi
 
 Mod_wsgi is an interface between web servers and python web applications. It is an Apache HTTP server mod that enables Apache to serve Flask applications.
@@ -124,21 +139,6 @@ To make our changes take effect.
 
 ```
 sudo etc/init.d/apache2 reload
-```
-
-=
-###Changes to the app structure
-
-We are going to make a few changes to this application:
-
-Inside the /var/www/wordgame/ directory, do:
-
-```
-mkdir wordgame
-mv * wordgame/
-touch wordgame.wsgi
-cd wordgame/
-mv wordgameapp.py __init__.py
 ```
 
 =
