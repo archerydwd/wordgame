@@ -9,7 +9,7 @@ I created a new repository on github.com and followed the provided instructions 
 =
 ###Set up vps
 
-Go to https://www.ovh.ie/vps/vps-classic.xml and order the VPS Classic 1 for €2.
+Go to https://www.ovh.ie/vps/vps-classic.xml and order the VPS Classic 1 for €2 a month.
 
 * Under the My VPS heading, you can leave the settings as they are.
 * Under the My Location heading, select Europe Roubaix which is the closest location to Ireland.
