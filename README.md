@@ -1,26 +1,26 @@
 # wordgame
-python wordgame on OVH vps tutorial
+Python wordgame vps tutorial
 
 =
-###Set up git repo
+###Set up git repository
 
-I created a new git repo on github.com and followed the provided instructions to initialise my wordgame application folder as a git repo.
+I created a new repository on github.com and followed the provided instructions to initialise my wordgame folder as a git repository.
 
 =
-###Set up OVH vps
+###Set up vps
 
 Go to https://www.ovh.ie/vps/vps-classic.xml and order the VPS Classic 1 for €2.
 
-* Under the My VPS heading you can leave the settings as they are.
-* Under the My Location heading select Europe Roubaix which is the closest location to Ireland.
-* Under the My OS heading change the distribution to Ubuntu and the version to Ubuntu 14.10 Server 64bits and the language to English.
+* Under the My VPS heading, you can leave the settings as they are.
+* Under the My Location heading, select Europe Roubaix which is the closest location to Ireland.
+* Under the My OS heading, change the distribution to Ubuntu, the version to Ubuntu 14.10 Server 64bits, and the language to English.
 
-Continue with the order. Once done you will be provided with a link to the page to view your server and an ip address.
+Continue with the order. Once done, you will be provided with a link to the control panel. Navigate to your server in this control panel where you can view the server's ip address.
 
 =
 ###Install Python
 
-At time of writing this the Python version was: 3.4.3 and the Flask version was: 0.10.1
+At the time of writing, the Python version was: 3.4.3 and the Flask version was: 0.10.1
 
 ```
 wget http://www.python.org/ftp/python/3.4.3/Python-3.4.3.tgz
@@ -51,15 +51,19 @@ sudo pip install Flask
 =
 ###Get Wordgame on the server
 
-issue the following command, replacing my ip address with yours:
+Issue the following command, replacing my server's ip address with your server's ip address:
 
 ```
 ssh root@46.105.16.62
 ```
 
-change directory to var/www/
+Change directory to var/www/
 
-install git
+**Install git**
+
+```
+sudo install git
+```
 
 Then issue the following command:
 
@@ -84,7 +88,7 @@ sudo apt-get install vim        //or your favourite text editor
 
 We are going to make a few changes to this application:
 
-Inside the /var/www/wordgame/ directory, do:
+Inside the /var/www/wordgame/ directory:
 
 ```
 mkdir wordgame
@@ -100,7 +104,7 @@ We had to change the permissions on the users.txt file so we can write to it whe
 =
 ###Install and Enable Mod_wsgi
 
-Mod_wsgi is an interface between web servers and python web applications. It is an Apache HTTP server mod that enables Apache to serve Flask applications.
+Mod_wsgi is an interface between web servers and python web applications. It's an Apache HTTP server mod that enables Apache to serve Flask applications.
 
 **Install**
 
@@ -183,7 +187,7 @@ If you are unsure what other virtual hosts are running, you can issue the follow
 sudo ls etc/apache2/sites-enabled/
 ```
 
-The above will produce a list of all running hosts, use the names in the below command one after another.
+The above will produce a list of all running hosts, for us there should only be one. We can now disable it using the following command.
 
 ```
 sudo a2dissite 000-default.conf
@@ -205,5 +209,7 @@ sudo etc/init.d/apache2 reload
 ###The End
 
 Now navigate to http://46.105.16.62 and you should have the wordgame.
+
+Thanks for reading.
 
 Darren.
