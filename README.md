@@ -28,6 +28,8 @@ ssh root@46.105.16.62
 
 change directory to var/www/
 
+install git
+
 Then issue the following command:
 
 ```
