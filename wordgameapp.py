@@ -9,32 +9,32 @@ def getTime():
 	return time()
 
 def update_log(user, time):
-	users = open("users.txt", 'r')
+	users = open("var/www/wordgame/wordgame/users.txt", 'r')
 	lines = []
 	lines.append(time + ': ' + user + '\n')
 	for line in users.readlines():
 		lines.append(line)
 	lines.sort()
-	with open("users.txt", 'w') as usr:
+	with open("var/www/wordgame/wordgame/users.txt", 'w') as usr:
 		for line in lines:
 			usr.write(''.join(line))
 
 @app.route('/displayranked')
 def showranks():
-	with open('users.txt') as ranks:
+	with open('var/www/wordgame/wordgame/users.txt') as ranks:
 		lines = ranks.readlines()
 		lines = lines[:10]
 		return render_template('show.html', the_title="Here are the top ranked players to date", the_ranked=lines, home_link=url_for("display_index"))
 
 def get_line_number(user):
-	with open('users.txt') as f:
+	with open('var/www/wordgame/wordgame/users.txt') as f:
 		for i, line in enumerate(f, 1):
 			if user in line:
 				return i
 
 @app.route('/')
 def display_index():
-	with open("sourcewords.txt", 'r') as source_words:
+	with open("var/www/wordgame/wordgame/sourcewords.txt", 'r') as source_words:
 		words = source_words.readlines()
 		number = randint(0, len(words))
 		session['source_word'] = words[number]
@@ -93,7 +93,7 @@ def populateAttempts():
 				else:
 					good_words.append(attempt)
 		for item in good_words:
-			if item in open('validwords.txt').read():
+			if item in open('var/www/wordgame/wordgame/validwords.txt').read():
 				pass
 			else:
 				bad_words.append(''.join(item) + " : This word was not in the valid words list!")
