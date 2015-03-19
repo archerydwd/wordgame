@@ -168,6 +168,39 @@ sudo a2ensite wordgame.conf
 sudo etc/init.d/apache2 reload
 ```
 
+=
+###Edit the wsgi file
 
+Change directory to var/www/wordgame/ and do the following:
 
+```
+vim wordgame.wsgi
+```
 
+And insert the following:
+
+```
+#!/usr/bin/python
+import sys
+import logging
+logging.basicConfig(stream=sys.stderr)
+sys.path.insert(0,"/var/www/wordgame/")
+
+from wordgame import app as application
+application.secret_key = 'ThisIsMyVerySecretKey'
+```
+
+**Restart Apache**
+
+To make our changes take effect.
+
+```
+sudo etc/init.d/apache2 reload
+```
+
+=
+###The End
+
+Now navigate to http://46.105.16.62 and you should have the wordgame.
+
+Darren.
