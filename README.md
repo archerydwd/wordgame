@@ -18,6 +18,37 @@ Go to https://www.ovh.ie/vps/vps-classic.xml and order the VPS Classic 1 for €
 Continue with the order. Once done you will be provided with a link to the page to view your server and an ip address.
 
 =
+###Install Python
+
+At time of writing this the Python version was: 3.4.3 and the Flask version was: 0.10.1
+
+```
+wget http://www.python.org/ftp/python/3.4.3/Python-3.4.3.tgz
+tar -xzf Python-3.4.3.tgz  
+cd Python-3.4.3
+
+./configure  
+make  
+sudo make install
+```
+
+=
+###Install pip
+
+We will use pip to install flask.
+
+```
+sudo apt-get install python-pip
+```
+
+=
+###Install Flask
+
+```
+sudo pip install Flask
+```
+
+=
 ###Get Wordgame on the server
 
 issue the following command, replacing my ip address with yours:
@@ -35,6 +66,7 @@ Then issue the following command:
 ```
 git clone https://github.com/archerydwd/wordgame.git
 ```
+
 
 
 
