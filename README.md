@@ -67,7 +67,48 @@ Then issue the following command:
 git clone https://github.com/archerydwd/wordgame.git
 ```
 
+=
+###Install Apache & Vim
 
+Open a terminal and enter the following commands:
 
+```
+sudo apt-get upgrade
+sudo apt-get update
+sudo apt-get install apache2
+sudo apt-get install vim        //or your favourite text editor
+```
+
+=
+###Install and Enable Mod_wsgi
+
+Mod_wsgi is an interface between web servers and python web applications. It is an Apache HTTP server mod that enables Apache to serve Flask applications.
+
+**Install**
+
+```
+sudo apt-get install libapache2-mod-wsgi python-dev
+```
+
+**Enable**
+
+```
+sudo a2enmod wsgi
+```
+
+=
+###Changes to the app structure
+
+We are going to make a few changes to this application:
+
+Inside the /var/www/wordgame/ directory, do:
+
+```
+mkdir wordgame
+mv * wordgame/
+touch wordgame.wsgi
+cd wordgame/
+mv wordgameapp.py __init__.py
+```
 
 
