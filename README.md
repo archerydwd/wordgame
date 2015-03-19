@@ -92,7 +92,10 @@ mv * wordgame/
 touch wordgame.wsgi
 cd wordgame/
 mv wordgameapp.py __init__.py
+sudo chmod 777 users.txt
 ```
+
+We had to change the permissions on the users.txt file so we can write to it when saving the new users.
 
 =
 ###Install and Enable Mod_wsgi
