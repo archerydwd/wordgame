@@ -208,7 +208,7 @@ sudo etc/init.d/apache2 reload
 =
 ###The End
 
-Now navigate to http://46.105.16.62 and you should have the wordgame.
+Now navigate to the ip and you should have the wordgame.
 
 Thanks for reading.
 
